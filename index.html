@@ -8,6 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
@@ -274,11 +276,26 @@
       <div class="row">
         <div class="col-lg-8 offset-lg-2">
           <div class="section-heading">
-            <h4>Rejoignez notre liste de diffusion pour recevoir les nouvelles du projet</h4>
+            <h4 style="text-transform: capitalize;">Rejoignez notre liste de diffusion pour recevoir les nouvelles du projet</h4>
           </div>
         </div>
         <div class="col-lg-6 offset-lg-3">
-          <form id="search" action="#" method="GET">
+          <script>
+            function click(e){
+              e.preventDefault();
+              console.log("test");
+              axios.post('/email', {
+                email: document.getElementsByName('address')[0].value,
+              })
+              .then(function (response) {
+                console.log(response);
+              })
+              .catch(function (error) {
+                console.log(error);
+              });
+            }
+            </script>
+          <form id="search" onSubmit="click(e)">
             <div class="row">
               <div class="col-lg-6 col-sm-6">
                 <fieldset>
@@ -287,13 +304,14 @@
               </div>
               <div class="col-lg-6 col-sm-6">
                 <fieldset>
-                  <button type="submit" class="main-button">Subscribe Now <i class="fa fa-angle-right"></i></button>
+                  <button class="main-button">Inscrire <i class="fa fa-angle-right"></i></button>
                 </fieldset>
               </div>
             </div>
           </form>
         </div>
       </div>
+    
       <div class="row">
         <div class="col-lg-3">
           <div class="footer-widget">
